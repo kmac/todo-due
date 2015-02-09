@@ -1,14 +1,21 @@
 #!/bin/bash
 
-MAILTO="<your email address>"
+# your email address
+MAILTO="<your email addres>"
+
+# the email header
 EMAIL_HEADER="todo.txt report"
-#MARKDOWN="/usr/bin/markdown"
-MARKDOWN=""
+
+# path to markdown - leave blank to send text email
+#MARKDOWN=""
+MARKDOWN="/usr/bin/markdown"
+
 
 outfile=/tmp/due-cron.out
 
 send_html_mail()
 {
+  # sends html email - this is the most portable way I could find
   (
   echo "To: $MAILTO"
   echo "Subject: $EMAIL_HEADER"
