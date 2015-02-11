@@ -8,6 +8,7 @@ Usage:
 
 """
 
+import argparse
 import datetime
 import os
 import os.path
@@ -16,6 +17,15 @@ import sys
 
 
 DEBUG=False
+
+
+class Usage(Exception):
+    def __init__(self, msg='', include_doc=False):
+        if msg == None:
+            msg = ''
+        self.msg = msg
+        if include_doc:
+            self.msg += '\n' + __doc__ % (sys.argv[0], )
 
 
 def debug(s):
@@ -83,10 +93,25 @@ def print_summary(scan_result):
             print('    %s' % l)
         print('')
 
-
 def main(argv=None):
-    # TODO process 'help' argument
-
+    sys.argv=sys.argv[1:]
+    parser = argparse.ArgumentParser(description="Reports overdue/due items by 'due:' tag",
+            epilog=("This addon produces a simple report based on analysing the 'due:' tag.\n"
+                "Items which are overdue or due are included in the report.\n"
+                "If there are no matching items there is no output produced (easily\n"
+                "parsed by a simple cron script."))
+    #parser.add_argument("-v", "--verbose", action="store_true", help="increase output verbosity")
+    parser.add_argument("-D", "--debug", action="store_true", help="turn on debug output")
+    parser.add_argument("usage", nargs="?", help="print this help")
+    args = parser.parse_args()
+    if args.usage:
+        parser.print_help()
+        return 0
+    if args.debug:
+        global DEBUG
+        DEBUG = True
+    #if args.verbose:
+    #    pass
     todo_file = os.environ['TODO_FILE']
     print_summary(scan_file(todo_file))
     return 0
