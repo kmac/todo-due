@@ -20,7 +20,25 @@ You need python installed. Anything at or above 2.7 should work. It also works i
 
 ### Usage
 
-Copy the `due` script into your `$HOME/.todo.actions.d` directory (or wherever you have your addons configured). Ensure it's executable, then you can just use it as a standard todo.sh addon:
+Copy the `due` script into your `$HOME/.todo.actions.d` directory (or wherever you have your addons configured). Ensure it's executable, then you can just use it as a standard todo.sh addon.
 
-    todo.sh due
+If there are no due/overdue items then there is no output. This is useful for scripting, e.g. for running a nightly cron to email the report.
+
+Example:
+
+    $ todo.sh due
+    # Todo.txt Due Items
+    
+    Overdue
+    -------
+    
+        (A) 2015-02-07 @home Schedule VISA payment due:2015-02-10
+    
+    Due Today
+    ---------
+    
+        (C) @calls Call to book car maintenance due:2015-02-12
+        (C) @work Submit TPS report due:2015-02-12
+        (C) @home Take out the garbage due:2015-02-12
+
 
