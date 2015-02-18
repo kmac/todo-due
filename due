@@ -73,7 +73,7 @@ def print_summary(scan_result):
         debug('print_summary: nothing to report')
         return
     print('# Todo.txt Due Items\n')
-    format_str = '    {0}'
+    format_str = '    {0}\n'
     if len(overdue_lines) > 0:
         print('Overdue\n-------\n')
         for l in overdue_lines:
