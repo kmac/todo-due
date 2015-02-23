@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# This script adds a todo item which is due in a specified number of days.
+# The intention is to invoke this from cron, to schedule periodic todo items.
+# 
+# NOTE: it's probably a good idea to make sure none of these run at the same time.
+#
+# An example set of crontab entries:
+#
+## todo.sh recurring items: Note: make sure none of these run at the same time
+#1 4 * * 2  /somepath/todo-due/todo-add-due.sh -d 0 "(C) @home Take out the trash" > /tmp/todo.sh.log 2>&1
+#0 4 12 * *  /somepath/todo-due/todo-add-due.sh -d 5 -t 2 "(B) @computer Schedule VISA payment" > /tmp/todo.sh.log 2>&1
+#0 4 1 * *  /somepath/todo-due/todo-add-due.sh -d 0 "@work Archive monthly email" > /tmp/todo.sh.log 2>&1
+#5 4 1 1,3,6,9 *  /somepath/todo-due/todo-add-due.sh -d 0 "@work Cleanup downloaded packages" > /tmp/todo.sh.log 2>&1
+
 help()
 {
   printf "usage: $(basename $0) -d <days> ?-t? <days> <todo_item>\n"
