@@ -42,3 +42,28 @@ Example:
         (C) @home Take out the garbage due:2015-02-12
 
 
+Other Scripts
+-------------
+
+### due-cron-example.sh
+
+An example script for cron which generates a report of due items and sends it
+via email.
+
+
+### todo-add-due.sh
+
+A script, intended to be run from cron, which adds an item with a generated
+`due:` tag and optional generated  threshold `t:` tag. 
+
+See crontab examples in the script header.
+
+
+### todo2jrnl.sh
+
+A script, inteded to be run from cron, which adds a summary of completed items
+for the day into [jrnl][1]. Items are taken from the todo.tx file and the
+archive file.
+
+[1]: https://maebert.github.io/jrnl/
+
