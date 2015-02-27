@@ -59,7 +59,7 @@ done_today=$(grep "x $todaystr" $TODO_FILE)
 archived_today=$(grep "x $todaystr" $ARCHIVE_FILE)
 
 if [ ! -z "$done_today" ] || [ ! -z "$archived_today" ]; then
-  summary="Summary of todo.sh completions:\n"
+  summary="Summary of todo.sh @complete items:\n"
   if [ ! -z "$done_today" ]; then
     summary="${summary}${done_today}"
   fi
