@@ -56,12 +56,13 @@ fi
 
 todaystr=$(date +%Y-%m-%d)
 done_today=$(grep "x $todaystr" $TODO_FILE)
+#echo "done_today='${done_today}'"
 archived_today=$(grep "x $todaystr" $ARCHIVE_FILE)
 
 if [ ! -z "$done_today" ] || [ ! -z "$archived_today" ]; then
-  summary="Summary of todo.sh @complete items:\n"
+  summary="Summary of todo.sh @complete items:"
   if [ ! -z "$done_today" ]; then
-    summary="${summary}${done_today}"
+    summary="${summary}\n${done_today}"
   fi
   if [ ! -z "$archived_today" ]; then
     summary="${summary}\n${archived_today}"
